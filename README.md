@@ -22,6 +22,17 @@ DATABASE_URL= База (sqlite+aiosqlite:///./fastapi.db)
 SECRET = Секрет
 FIRST_SUPERUSER_EMAIL= Имя супер юзера
 FIRST_SUPERUSER_PASSWORD = Пароль от супер юзера
+type: Optional[str] = None              |
+project_id: Optional[str] = None        |
+private_key_id: Optional[str] = None    |
+private_key: Optional[str] = None       |  Параметры из json google
+client_email: Optional[str] = None      |
+client_id: Optional[str] = None         |
+auth_uri: Optional[str] = None          |
+token_uri: Optional[str] = None         |
+auth_provider_x509_cert_url:            |
+client_x509_cert_url:                   |
+email твой маил
 ```
 
 ### python + FastAPI + SQLAlchemy + google 
