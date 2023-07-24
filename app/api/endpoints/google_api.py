@@ -46,4 +46,3 @@ async def get_report(
         wrapper_services
     )
     return charity_projects
-
