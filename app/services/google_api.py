@@ -7,29 +7,33 @@ from app.core.config import settings
 
 
 async def spreadsheets_create(wrapper_services: Aiogoogle) -> str:
-    now_date_time = datetime.now().strftime(const.FORMAT)
     service = await wrapper_services.discover('sheets', 'v4')
     spreadsheet_body = {
         'properties': {
-            'title': const.SPREADSHEET_TITLE.format(now_date_time),
+            'title': const.SPREADSHEET_TITLE.format(
+                datetime.now().strftime(
+                    const.FORMAT
+                )
+            ),
             'locale': const.LOCALE
         },
         'sheets': [
             {'properties': {
-                'sheetType': 'GRID',
+                'sheetType': const.SHEERTYPE,
                 'sheetId': 0,
                 'title': const.SHEET_TITLE,
-                'gridProperties': {'rowCount': const.ROW_COUNT,
-                                   'columnCount': const.COLUMN_COUNT}
+                'gridProperties': {
+                    'rowCount': const.ROW_COUNT,
+                    'columnCount': const.COLUMN_COUNT
+                }
             }
             }
         ]
     }
-    response = await wrapper_services.as_service_account(
+    return await wrapper_services.as_service_account(
         service.spreadsheets.create(json=spreadsheet_body)
-    )
-    spreadsheet_id = response['spreadsheetId']  # noqa
-    return spreadsheet_id
+    )['spreadsheetId']
+
 
 
 async def set_user_permissions(
@@ -37,8 +41,8 @@ async def set_user_permissions(
         wrapper_services: Aiogoogle
 ) -> None:
     permissions_body = {
-        'type': 'user',
-        'role': 'writer',
+        'type': const.TYPE,
+        'role': const.ROLE,
         'emailAddress': settings.email
     }
     service = await wrapper_services.discover('drive', 'v3')
@@ -46,8 +50,9 @@ async def set_user_permissions(
         service.permissions.create(
             fileId=spreadsheet_id,
             json=permissions_body,
-            fields="id"
-        ))
+            fields=const.FILDS_FOR_SERVIS_ACCOUNT
+        )
+    )
 
 
 async def spreadsheets_update_value(
@@ -71,7 +76,7 @@ async def spreadsheets_update_value(
         table_values.append(new_row)
 
     update_body = {
-        'majorDimension': 'ROWS',
+        'majorDimension': const.TABLE_UPDATA,
         'values': table_values
     }
     await wrapper_services.as_service_account(
