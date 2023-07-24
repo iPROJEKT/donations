@@ -35,7 +35,6 @@ async def spreadsheets_create(wrapper_services: Aiogoogle) -> str:
     )['spreadsheetId']
 
 
-
 async def set_user_permissions(
         spreadsheet_id: str,
         wrapper_services: Aiogoogle
