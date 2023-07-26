@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from aiogoogle import Aiogoogle
 
 from app.core import const
