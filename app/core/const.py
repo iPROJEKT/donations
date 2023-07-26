@@ -45,18 +45,16 @@ SPREADSHEET_BODY = {
         ),
         'locale': ''
     },
-    'sheets':
-        [
-            {
-                'properties': {
-                    'sheetType': '',
-                    'sheetId': '',
-                    'title': '',
-                    'gridProperties': {
-                        'rowCount': '',
-                        'columnCount': ''
-                    }
-                }
+    'sheets': [
+        {'properties': {
+            'sheetType': '',
+            'sheetId': '',
+            'title': '',
+            'gridProperties': {
+                'rowCount': '',
+                'columnCount': ''
             }
-        ]
+        }
+        }
+    ]
 }
