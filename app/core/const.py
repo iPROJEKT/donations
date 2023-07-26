@@ -30,3 +30,33 @@ TYPE = 'user'
 ROLE = 'writer'
 TABLE_UPDATA = 'ROWS'
 FILDS_FOR_SERVIS_ACCOUNT = 'id'
+SHEERTID = 0
+TABLE_VAUES = [
+    [A1, datetime.now().strftime(FORMAT)],
+    [A2],
+    [A3, B3, C3]
+]
+SPREADSHEET_BODY = {
+    'properties': {
+        'title': SPREADSHEET_TITLE.format(
+            datetime.now().strftime(
+                FORMAT
+            )
+        ),
+        'locale': ''
+    },
+    'sheets':
+        [
+            {
+                'properties': {
+                    'sheetType': '',
+                    'sheetId': '',
+                    'title': '',
+                    'gridProperties': {
+                        'rowCount': '',
+                        'columnCount': ''
+                    }
+                }
+            }
+        ]
+}
