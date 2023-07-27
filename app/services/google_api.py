@@ -68,7 +68,7 @@ async def spreadsheets_update_value(
         'values': const.TABLE_VAUES
     }
     if len(const.TABLE_VAUES) > 30:
-        raise ValueError('Слишком много закрытых проектов')
+        raise ValueError(const.VALUE_ERROR)
     await wrapper_services.as_service_account(
         service.spreadsheets.values.update(
             spreadsheetId=spreadsheet_id,

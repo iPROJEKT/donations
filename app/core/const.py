@@ -24,24 +24,24 @@ LOCALE = 'ru_RU'
 SHEET_TITLE = 'Закрытые проекты'
 ROW_COUNT = 30
 COLUMN_COUNT = 3
-RANGE = 'A1:C30'
+RANGE = r'A1:C30'
 SHEERTYPE = 'GRID'
 TYPE = 'user'
 ROLE = 'writer'
 TABLE_UPDATA = 'ROWS'
 FILDS_FOR_SERVIS_ACCOUNT = 'id'
 SHEERTID = 0
+VALUE_ERROR = 'Слишком много закрытых проектов'
+CYRRENR_TIME = datetime.now().strftime(FORMAT)
 TABLE_VAUES = [
-    [A1, datetime.now().strftime(FORMAT)],
+    [A1, CYRRENR_TIME],
     [A2],
     [A3, B3, C3]
 ]
 SPREADSHEET_BODY = {
     'properties': {
         'title': SPREADSHEET_TITLE.format(
-            datetime.now().strftime(
-                FORMAT
-            )
+            CYRRENR_TIME
         ),
         'locale': ''
     },
