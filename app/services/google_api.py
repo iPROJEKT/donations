@@ -55,6 +55,7 @@ async def spreadsheets_update_value(
     charity_projects: list,
     wrapper_services: Aiogoogle
 ) -> None:
+    table = const.TABLE_VALUES.copy()
     service = await wrapper_services.discover('sheets', 'v4')
     for project in charity_projects:
         new_row = [
@@ -62,12 +63,12 @@ async def spreadsheets_update_value(
             str(project.close_date - project.create_date),
             str(project.description)
         ]
-        const.TABLE_VAUES.append(new_row)
+        table.append(new_row)
     update_body = {
         'majorDimension': const.TABLE_UPDATA,
-        'values': const.TABLE_VAUES
+        'values': table
     }
-    if len(const.TABLE_VAUES) > 30:
+    if len(table) > const.ROW_COUNT:
         raise ValueError(const.VALUE_ERROR)
     await wrapper_services.as_service_account(
         service.spreadsheets.values.update(

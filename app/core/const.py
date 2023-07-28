@@ -1,12 +1,6 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 
 
-FROM_TIME = (
-    datetime.now() + timedelta(minutes=10)
-).isoformat(timespec='minutes')
-TO_TIME = (
-    datetime.now() + timedelta(hours=1)
-).isoformat(timespec='minutes')
 MIN_LEGTH_PROJEKT = 1
 MAX_LEGTH_PROJEKT = 100
 START_INVERSED_AMOUNT = 0
@@ -32,16 +26,16 @@ TABLE_UPDATA = 'ROWS'
 FILDS_FOR_SERVIS_ACCOUNT = 'id'
 SHEERTID = 0
 VALUE_ERROR = 'Слишком много закрытых проектов'
-CYRRENR_TIME = datetime.now().strftime(FORMAT)
-TABLE_VAUES = [
-    [A1, CYRRENR_TIME],
+CURRENT_TIME = datetime.now().strftime(FORMAT)
+TABLE_VALUES = [
+    [A1, CURRENT_TIME],
     [A2],
     [A3, B3, C3]
 ]
 SPREADSHEET_BODY = {
     'properties': {
         'title': SPREADSHEET_TITLE.format(
-            CYRRENR_TIME
+            CURRENT_TIME
         ),
         'locale': ''
     },
