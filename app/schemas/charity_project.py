@@ -4,7 +4,6 @@ from typing import Optional
 from pydantic import BaseModel, Field, Extra
 
 from app.core.const import (
-    CURRENT_TIME,
     MIN_LEGTH_PROJEKT,
     MAX_LEGTH_PROJEKT,
     START_INVERSED_AMOUNT,
