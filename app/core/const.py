@@ -25,17 +25,17 @@ ROLE = 'writer'
 TABLE_UPDATA = 'ROWS'
 FILDS_FOR_SERVIS_ACCOUNT = 'id'
 SHEERTID = 0
-VALUE_ERROR = 'Слишком много закрытых проектов'
-CURRENT_TIME = datetime.now().strftime(FORMAT)
+ROW_COUNT_ERROR = 'Слишком много закрытых проектов'
+COLUMN_COUNT_ERROR = 'В таблице всего 3 столбца'
 TABLE_VALUES = [
-    [A1, CURRENT_TIME],
+    [A1, datetime.now().strftime(FORMAT)],
     [A2],
     [A3, B3, C3]
 ]
 SPREADSHEET_BODY = {
     'properties': {
         'title': SPREADSHEET_TITLE.format(
-            CURRENT_TIME
+            datetime.now().strftime(FORMAT)
         ),
         'locale': ''
     },

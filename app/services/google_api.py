@@ -1,3 +1,5 @@
+import copy
+
 from aiogoogle import Aiogoogle
 
 from app.core import const
@@ -55,7 +57,7 @@ async def spreadsheets_update_value(
     charity_projects: list,
     wrapper_services: Aiogoogle
 ) -> None:
-    table = const.TABLE_VALUES.copy()
+    table = copy.deepcopy(const.TABLE_VALUES)
     service = await wrapper_services.discover('sheets', 'v4')
     for project in charity_projects:
         new_row = [
@@ -69,7 +71,9 @@ async def spreadsheets_update_value(
         'values': table
     }
     if len(table) > const.ROW_COUNT:
-        raise ValueError(const.VALUE_ERROR)
+        raise ValueError(const.ROW_COUNT_ERROR)
+    if len(table) > const.COLUMN_COUNT:
+        raise ValueError(const.COLUMN_COUNT_ERROR)
     await wrapper_services.as_service_account(
         service.spreadsheets.values.update(
             spreadsheetId=spreadsheet_id,
