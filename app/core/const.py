@@ -28,7 +28,7 @@ SHEERTID = 0
 ROW_COUNT_ERROR = 'Слишком много закрытых проектов'
 COLUMN_COUNT_ERROR = 'В таблице всего 3 столбца'
 TABLE_VALUES = [
-    [A1, datetime.now().strftime(FORMAT)],
+    [A1],
     [A2],
     [A3, B3, C3]
 ]

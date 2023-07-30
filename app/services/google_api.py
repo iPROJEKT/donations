@@ -1,4 +1,5 @@
 import copy
+from datetime import datetime
 
 from aiogoogle import Aiogoogle
 
@@ -58,6 +59,7 @@ async def spreadsheets_update_value(
     wrapper_services: Aiogoogle
 ) -> None:
     table = copy.deepcopy(const.TABLE_VALUES)
+    table[0] = [const.A1, datetime.now().strftime(const.FORMAT)]
     service = await wrapper_services.discover('sheets', 'v4')
     for project in charity_projects:
         new_row = [
