@@ -16,6 +16,11 @@ async def get_spreadsheet_body(
     column_count: int = const.COLUMN_COUNT,
     body: dict = const.SPREADSHEET_BODY
 ) -> dict:
+    body['properties']['title'] = const.SPREADSHEET_TITLE.format(
+        datetime.now().strftime(
+            const.FORMAT
+        )
+    )
     body['properties']['locale'] = locale
     body['sheets'][0]['properties']['sheetType'] = sheet_type
     body['sheets'][0]['properties']['sheetId'] = sheet_id

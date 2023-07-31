@@ -34,9 +34,7 @@ TABLE_VALUES = [
 ]
 SPREADSHEET_BODY = {
     'properties': {
-        'title': SPREADSHEET_TITLE.format(
-            datetime.now().strftime(FORMAT)
-        ),
+        'title': '',
         'locale': ''
     },
     'sheets': [
