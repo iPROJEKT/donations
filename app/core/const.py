@@ -1,6 +1,3 @@
-from datetime import datetime
-
-
 MIN_LEGTH_PROJEKT = 1
 MAX_LEGTH_PROJEKT = 100
 START_INVERSED_AMOUNT = 0
